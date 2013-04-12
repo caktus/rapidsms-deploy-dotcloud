@@ -21,14 +21,17 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+import json
+with open('/home/dotcloud/environment.json') as f:
+    env = json.load(f)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '{{ project_name }}.db',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'rapidsms_appcloud',
+        'USER': env['DOTCLOUD_DB_SQL_LOGIN'],
+        'PASSWORD': env['DOTCLOUD_DB_SQL_PASSWORD'],
+        'HOST': env['DOTCLOUD_DB_SQL_HOST'],
+        'PORT': int(env['DOTCLOUD_DB_SQL_PORT']),
     }
 }
 
@@ -189,6 +192,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # External apps
     "django_nose",
+    "djcelery",
     #"djtables",  # required by rapidsms.contrib.locations
     "django_tables2",
     "selectable",
@@ -200,13 +204,29 @@ INSTALLED_APPS = (
     "rapidsms.contrib.messaging",
     "rapidsms.contrib.registration",
     "rapidsms.contrib.echo",
+    "rapidsms.router.db",
+    "rapidsms.backends.database",
     "rapidsms.contrib.default",  # Must be last
 )
 
+LOGIN_REDIRECT_URL = '/'
+
 INSTALLED_BACKENDS = {
     "message_tester": {
-        "ENGINE": "rapidsms.contrib.httptester.backend",
+        "ENGINE": "rapidsms.backends.database.DatabaseBackend", 
     },
 }
 
-LOGIN_REDIRECT_URL = '/'
+RAPIDSMS_ROUTER = "rapidsms.router.db.DatabaseRouter"
+
+import djcelery
+djcelery.setup_loader()
+BROKER_URL = env['DOTCLOUD_QUEUE_REDIS_URL']
+CELERY_DEFAULT_QUEUE = 'default'
+CELERY_QUEUES = {
+    'default': {
+        'exchange': 'default',
+        'exchange_type': 'topic',
+        'binding_key': 'tasks.#'
+    }
+}
