@@ -1,0 +1,2 @@
+-r base.txt
+django-celery-with-redis==3.0
