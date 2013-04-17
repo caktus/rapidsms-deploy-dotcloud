@@ -73,9 +73,9 @@ Deploy your project::
 
    dotcloud push
 
-Deploying the project will run the ``postinstall`` script which includes 
-creating a database using ``createdb.py``, as well as running the ``syncdb``
-and ``collectstatic`` management commands.
+Deploying the project will automatically run the ``postinstall`` script which
+includes creating a database using ``createdb.py``, as well as running the
+``syncdb`` and ``collectstatic`` management commands.
 
 Description of dotCloud Deployment
 ----------------------------------
@@ -97,7 +97,7 @@ is more information about this in the `Django with WSGI`_ and `dotCloud
 Django`_ documenation. The ``nginx.conf`` file is the web server file used to
 serve static media.  The paths in this file must match up with where the static
 media lands when it is collected using the ``collectstatic`` management command
-run by the ``postinstall`` script.
+run automatically by the ``postinstall`` script.
 
 Database Server
 ^^^^^^^^^^^^^^^
