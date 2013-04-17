@@ -73,13 +73,16 @@ Deploy your project::
 
    dotcloud push
 
-Description of Setup
---------------------
+Description of dotCloud Deployment
+----------------------------------
 
 The services provisioned using this setup are: web application server, web
 static media server, a postgres database, a redis queue server, and python
 queue workers. The services provisioned are outlined in the ``dotcloud.yml``
-file.
+file. The RapidSMS configuration included in this template is using the
+`Database Router`_ and `Database Backend`_.  The overall configuration is
+described in more depth in the `dotCloud First Steps`_ and `dotCloud Django`_
+documentation.
 
 Web Application and Static Media Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -117,11 +120,12 @@ more documentation in the `Django and Celery on dotCloud`_ and `Background
 Processes on dotCloud`_ documentation.
 
 .. _dotCloud First Steps: http://docs.dotcloud.com/firststeps/
+.. _dotCloud Django: http://docs.dotcloud.com/tutorials/python/django/
 .. _Django and Celery on dotCloud: http://docs.dotcloud.com/tutorials/python/django-celery/
 .. _Background Processes on dotCloud: http://docs.dotcloud.com/guides/daemons/
 .. _Celery First Steps with Django: http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
 .. _Celery Using Redis: http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html
-.. _Database Backend: http://www.rapidsms.org/en/latest/topics/backends/database.html
 .. _Django with WSGI: https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/
-.. _dotCloud Django: http://docs.dotcloud.com/tutorials/python/django/
 .. _Using Celery for Scheduling Tasks: http://rapidsms.readthedocs.org/en/latest/topics/celery.html
+.. _Database Backend: http://rapidsms.readthedocs.org/en/latest/topics/backends/database.html 
+.. _Database Router: http://rapidsms.readthedocs.org/en/latest/topics/router/db.html
