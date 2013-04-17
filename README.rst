@@ -55,6 +55,24 @@ You should now be able to run the development server::
 Deploying to dotCloud
 ---------------------
 
+Configuring deployment to dotCloud involves downloading the relevant dotCloud
+CLI interface tool and using it to authenticate, provision services, and push
+your code up. 
+
+Install and configure the dotCloud CLI::
+
+   pip install dotcloud 
+   dotcloud setup
+
+Create a new project::
+
+   dotcloud create <project_name>
+
+Deploy your project::
+
+   dotcloud push
+
+.. _dotCloud First Steps: http://docs.dotcloud.com/firststeps/
 .. _Django and Celery on dotCloud: http://docs.dotcloud.com/tutorials/python/django-celery/
 .. _Background Processes on dotCloud: http://docs.dotcloud.com/guides/daemons/
 .. _Celery First Steps with Django: http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
