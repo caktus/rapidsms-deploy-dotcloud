@@ -73,6 +73,10 @@ Deploy your project::
 
    dotcloud push
 
+Deploying the project will run the ``postinstall`` script which includes 
+creating a database using ``createdb.py``, as well as running the ``syncdb``
+and ``collectstatic`` management commands.
+
 Description of dotCloud Deployment
 ----------------------------------
 
