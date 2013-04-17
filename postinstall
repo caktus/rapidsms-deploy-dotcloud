@@ -2,4 +2,3 @@
 python manage.py collectstatic --noinput
 python createdb.py
 python manage.py syncdb --noinput
-python mkadmin.py
