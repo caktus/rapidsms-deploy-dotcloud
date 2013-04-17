@@ -3,13 +3,17 @@ Installation
 
 To start a new project with this template::
 
-    django-admin.py startproject --template=https://github.com/rapidsms/rapidsms-project-template/zipball/master --extension=py,rst <``project_name``>
+    django-admin.py startproject --template=https://github.com/caktus/rapidsms-deploy-dotcloud/zipball/master --extension=py,rst <``project_name``>
 
-Or to use a released version:
+.. Or to use a released version:
     django-admin.py startproject --template=https://github.com/rapidsms/rapidsms-project-template/zipball/release-0.13.0 --extension=py,rst <``project_name``>
 
 ``project_name``
 ========================
+
+This project template is based off the standard `rapidsms-project-template
+<https://github.com/rapidsms/rapidsms-project-template>`_. With the addition
+of configuration and scripts aimed at deploying your project to dotCloud.
 
 Below you will find basic setup instructions for the ``project_name``
 project. To begin you should have the following applications installed on your
@@ -19,8 +23,8 @@ local development system:
 - `pip >= 1.1 <http://www.pip-installer.org/>`_
 - `virtualenv >= 1.8 <http://www.virtualenv.org/>`_
 
-Getting Started
----------------
+Local Setup
+-----------
 
 To setup your local environment you should create a virtualenv and install the
 necessary requirements::
@@ -47,3 +51,12 @@ Run syncdb::
 You should now be able to run the development server::
 
     python manage.py runserver
+
+Deploying to dotCloud
+---------------------
+
+.. _Django and Celery on dotCloud: http://docs.dotcloud.com/tutorials/python/django-celery/
+.. _Background Processes on dotCloud: http://docs.dotcloud.com/guides/daemons/
+.. _Celery First Steps with Django: http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
+.. _Celery Using Redis: http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html
+.. _Database Backend: http://www.rapidsms.org/en/latest/topics/backends/database.html
