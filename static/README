@@ -1,0 +1,2 @@
+Project level static files.
+Will be collected FROM here with manage.py collectstatic.
